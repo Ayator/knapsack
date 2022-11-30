@@ -2,7 +2,7 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileWriter;
 import java.io.IOException;
-import java.util.ArrayList;
+import java.util.BitSet;
 import java.util.Scanner;
 
 public class Knapsack {
@@ -73,19 +73,24 @@ public class Knapsack {
         try {
             // save to output
             FileWriter outputFile = new FileWriter(outputFilepath);
-            ArrayList<Item> bestItems = solution.items();
+            // ArrayList<Item> bestItems = solution.items();
             StringBuilder stringBuilder = new StringBuilder(itemCount * 2 - 1);
-            for (int i = 0, j = 0; i < itemCount; i++) {
-                if(j < bestItems.size() && items[i] == bestItems.get(j)){
-                    stringBuilder.append('1');
-                    j++;
-                }
-                else{
-                    stringBuilder.append('0');
-                }
-                if(i < itemCount - 1)
-                    stringBuilder.append(' ');
+            BitSet bits = solution.getBits();
+            stringBuilder.append(bits.get(0) ? "1" : "0");
+            for (int i = 1; i < itemCount; i++) {
+                stringBuilder.append(bits.get(i) ? " 1" : " 0");
             }
+            // for (int i = 0, j = 0; i < itemCount; i++) {
+            //     if(j < bestItems.size() && items[i] == bestItems.get(j)){
+            //         stringBuilder.append('1');
+            //         j++;
+            //     }
+            //     else{
+            //         stringBuilder.append('0');
+            //     }
+            //     if(i < itemCount - 1)
+            //         stringBuilder.append(' ');
+            // }
             outputFile.write(solution.totalValue() + "\n" + stringBuilder.toString());
             outputFile.close();
         } catch (IOException e) {
