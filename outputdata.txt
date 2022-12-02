@@ -1,0 +1,99 @@
+Running: ks_4_0
+Knapsack: [itemCount: 4, capacity: 11]
+Runtime: 105ms
+Max memory: 2mb
+
+Running: ks_19_0
+Knapsack: [itemCount: 19, capacity: 31181]
+Runtime: 38ms
+Max memory: 3mb
+
+Running: ks_30_0
+Knapsack: [itemCount: 30, capacity: 100000]
+Runtime: 45ms
+Max memory: 8mb
+
+Running: ks_40_0
+Knapsack: [itemCount: 40, capacity: 100000]
+Runtime: 48ms
+Max memory: 8mb
+
+Running: ks_45_0
+Knapsack: [itemCount: 45, capacity: 58181]
+Runtime: 39ms
+Max memory: 5mb
+
+Running: ks_50_0
+Knapsack: [itemCount: 50, capacity: 341045]
+Runtime: 345ms
+Max memory: 26mb
+
+Running: ks_50_1
+Knapsack: [itemCount: 50, capacity: 5000]
+Runtime: 9ms
+Max memory: 1mb
+
+Running: ks_60_0
+Knapsack: [itemCount: 60, capacity: 100000]
+Runtime: 59ms
+Max memory: 8mb
+
+Running: ks_82_0
+Knapsack: [itemCount: 82, capacity: 104723596]
+Runtime: 154983ms
+Max memory: 8752mb
+
+Running: ks_100_0
+Knapsack: [itemCount: 100, capacity: 100000]
+Runtime: 80ms
+Max memory: 13mb
+
+Running: ks_100_1
+Knapsack: [itemCount: 100, capacity: 3190802]
+Runtime: 5346ms
+Max memory: 279mb
+
+Running: ks_100_2
+Knapsack: [itemCount: 100, capacity: 10000]
+Runtime: 18ms
+Max memory: 2mb
+
+Running: ks_106_0
+Knapsack: [itemCount: 106, capacity: 106925262]
+Runtime: 138866ms
+Max memory: 8912mb
+
+Running: ks_200_0
+Knapsack: [itemCount: 200, capacity: 100000]
+Runtime: 108ms
+Max memory: 13mb
+
+Running: ks_200_1
+Knapsack: [itemCount: 200, capacity: 2640230]
+Runtime: 8407ms
+Max memory: 517mb
+
+Running: ks_300_0
+Knapsack: [itemCount: 300, capacity: 4040184]
+Runtime: 17857ms
+Max memory: 445mb
+
+Running: ks_400_0
+Knapsack: [itemCount: 400, capacity: 9486367]
+Runtime: 69522ms
+Max memory: 1202mb
+
+Running: ks_500_0
+Knapsack: [itemCount: 500, capacity: 50000]
+Runtime: 257ms
+Max memory: 9mb
+
+Running: ks_1000_0
+Knapsack: [itemCount: 1000, capacity: 100000]
+Runtime: 1134ms
+Max memory: 23mb
+
+Running: ks_10000_0
+Knapsack: [itemCount: 10000, capacity: 1000000]
+Runtime: 222294ms
+Max memory: 1316mb

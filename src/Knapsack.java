@@ -101,11 +101,12 @@ public class Knapsack {
 
     @Override
     public String toString() {
-        String str = "Knapsack: [\n";
-        for (int i = 0; i < itemCount - 1; i++) {
-            str += items[i].toString() + ",\n";
-        }
-        str += items[itemCount - 1].toString() + "\n]";
+        String str = "Knapsack: [itemCount: " + itemCount + ", capacity: " + capacity + "]";
+        // String str = "Knapsack: [\n";
+        // for (int i = 0; i < itemCount - 1; i++) {
+        //     str += items[i].toString() + ",\n";
+        // }
+        // str += items[itemCount - 1].toString() + "\n]";
         return str;
     }
 }
