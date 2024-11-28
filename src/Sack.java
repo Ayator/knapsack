@@ -1,103 +1,63 @@
 import java.util.ArrayList;
 import java.util.BitSet;
 
+/* Sack class is designed to represent a knapsack-like object.
+ * It uses the BitSet class to track which items are in the sack and
+ * includes methods to manipulate and query the sack's contents.
+ */
 public class Sack {
+    // Stores the total value of all items in the sack. This is updated as items are added or removed.
     private int totalValue;
-
-    // old
-    // Sack parentSack;
-    // Item item;
-
-    // new
-    // boolean[] sack;
+    // An array of Item objects representing all available items that could be placed in the sack.
+    // This array is passed into the constructor.
     final Item[] items;
-
+    // A BitSet object used to track which items are in the sack.
+    //  * Each index in the BitSet corresponds to the index of an Item in the items array.
+    //  * If bits.get(i) is true, the item at items[i] is in the sack; otherwise, it is not.
     BitSet bits;
 
+    // Returns the current BitSet (bits) of the sack. 
     public BitSet getBits() {
         return bits;
     }
 
+    // Constructor initializes a Sack object with a given array of Item objects.
     public Sack(Item[] items){
         this.totalValue = 0;
-        // v1
-        // this.parentSack = parentSack;
-        // v2
-        // this.items = items;
-        // this.sack = new boolean[items.length];
-        // v3
+        // Initialize BitSet with a size equal to the number of items.
         this.bits = new BitSet(items.length);
         this.items = items;
     }
 
-    // v1
-    // old version using recursion to store Sacks (consumes too much ram for ks_82_0 and ks_106_0)
-    // public Sack(Sack parentSack){
-    //     this.totalValue = 0;
-    //     this.parentSack = parentSack;
-    // }
-
-    // v1
-    // public Sack(Sack parentSack, Item newItem){
-    //     this.totalValue = parentSack.totalValue + newItem.value;
-    //     this.parentSack = parentSack;
-    //     this.item = newItem;
-    // }
-
-    // v1
-    // public ArrayList<Item> items(int currentSize){
-    //     if(parentSack == null)
-    //         return new ArrayList<>(currentSize);
-    //     ArrayList<Item> items;
-    //     items = parentSack.items(currentSize + 1);
-    //     items.add(item);
-    //     return items;
-    // }
-
-    // v1
-    // public ArrayList<Item> items(){
-    //     return items(0);
-    // }
-
-    // v2
-    // public ArrayList<Item> items(){
-    //     ArrayList<Item> list = new ArrayList<>(sack.length);
-    //     for (int i = 0; i < sack.length; i++)
-    //         if(sack[i])
-    //             list.add(items[i]);
-    //     return list;
-    // }
-
-    // v2
-    // public void updateSack(Sack otherSack, Item newItem){
-    //     for (int i = 0; i < otherSack.sack.length; i++) {
-    //         sack[i] = otherSack.sack[i];
-    //     }
-    //     totalValue = otherSack.totalValue + newItem.value;
-    //     sack[newItem.id] = true;
-    // }
-
-    // v3
-    // assume number of items is less than maximum integer value
+    // Generates a list of items currently in the sack based on the bits BitSet.
+    // Assumes number of items is less than maximum integer value.
     public ArrayList<Item> items(){
+        // bits.cardinality() is the number of set bits, i.e., items in the sack
         ArrayList<Item> list = new ArrayList<>(bits.cardinality());
+        // nextSetBit(int) finds the next index in the BitSet where a bit is true
         for(int i = bits.nextSetBit(0); i >= 0; i = bits.nextSetBit(i + 1))
             list.add(items[i]);
         return list;
     }
 
-    // v3
+    // Updates the current sack by copying the contents of another sack and adding a new item to it.
     public void updateSack(Sack otherSack, Item newItem){
+        // remove all items
         bits.clear();
+        // copy bits from otherSack to current sack
         bits.or(otherSack.bits);
+        // adds newItem to its respective bit position
         bits.set(newItem.id);
+        // update totalValue by adding new item's value
         totalValue = otherSack.totalValue + newItem.value;
     }
 
+    // Returns the current totalValue of the sack.
     public int totalValue() {
         return totalValue;
     }
 
+    // Provides a string representation of the sack, including its total value and a list of the items it contains.
     @Override
     public String toString() {
         String str = "Sack: [totalValue: " + totalValue + ", [\n";
